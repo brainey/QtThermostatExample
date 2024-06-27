@@ -1,2 +1,2 @@
 # QtThermostatExample
-Working thru Monty the Software Engineer's qml examle - https://github.com/MontyTheSoftwareEngineer/SmartThermostatExample
+Working thru Monty the Software Engineer's qml example - https://github.com/MontyTheSoftwareEngineer/SmartThermostatExample
