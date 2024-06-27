@@ -1,15 +1,16 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import Brainey 1.0
+// import Brainey 1.0
 
 Slider {
     id: temperatureControlSlider
-    value: 70
     from: 55
     to: 85
     stepSize: 1
     orientation: Qt.Vertical
-    onValueChanged: systemController.setTargetTemp( value )
+    onValueChanged: {
+        systemController.targetTemp = value
+    }
 
     background: Rectangle {
         height: parent.height

@@ -2,13 +2,12 @@ import QtQuick 2.15
 import Brainey 1.0
 
 Item {
+    id: homeScreen
+
     Rectangle {
         id: mainBackground
         anchors.fill: parent
         color: "black"
-        // visible: true
-
-
     }
 
     Text {
@@ -71,6 +70,7 @@ Item {
 
     TemperatureControlSlider {
         id: temperatureSlider
+        value: systemController.targetTemp
         anchors {
             top: parent.top
             bottom: parent.bottom

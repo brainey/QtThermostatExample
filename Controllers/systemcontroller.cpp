@@ -1,10 +1,11 @@
 #include "systemcontroller.h"
+#include <iostream>
 
 SystemController::SystemController(QObject *parent)
     : QObject{parent}
-    , m_currentSystemTemperature( 65 )
-    , m_targetTemp( 70 )
-    , m_systemStatusMessage( "Foobar...")
+    , m_currentSystemTemperature( 64 )
+    , m_targetTemp( 60 )
+    , m_systemStatusMessage( "Heating...")
     , m_systemState( HEATING )
 {
 
@@ -67,6 +68,9 @@ void SystemController::setSystemState(HeatSelectState newSystemState)
 
 void SystemController::checkSystemStatus()
 {
+    std::cout << "state: " << m_systemState << '\n';
+    std::cout << "target: " << m_targetTemp << '\n' << std::flush;
+
     if ( (m_currentSystemTemperature < m_targetTemp) && (m_systemState == HEATING) )
         setSystemStatusMessage("Heating...");
     else if ( (m_currentSystemTemperature > m_targetTemp) && (m_systemState == COOLING) )

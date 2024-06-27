@@ -14,11 +14,12 @@ public:
     explicit SystemController(QObject *parent = nullptr);
 
     enum HeatSelectState {
+        OFF,
         HEATING,
         COOLING,
-        AUTO,
-        OFF
+        AUTO
     };
+    Q_ENUM(HeatSelectState)
 
     int currentSystemTemperature() const;
     void setCurrentSystemTemperature(int newCurrentSystemTemperature);
@@ -36,7 +37,6 @@ signals:
     void currentSystemTemperatureChanged();
     void targetTempChanged();
     void systemStatusMessageChanged();
-
     void systemStateChanged();
 
 private:
