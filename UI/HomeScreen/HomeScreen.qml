@@ -4,6 +4,26 @@ import Brainey 1.0
 Item {
     id: homeScreen
 
+    property var heatSelectDialogHolder: null
+
+    function createHeatSelectDialog() {
+        if ( heatSelectDialogHolder === null ) {
+            var component = Qt.createComponent( "HeatSelectDialog.qml" )
+            heatSelectDialogHolder = component.createObject( homeScreen, {"x": 0, "y": 0})
+            if ( heatSelectDialogHolder ) {
+                heatSelectDialogHolder.anchors.fill = homeScreen
+                heatSelectDialogHolder.destroyMe.connect( destroyHeatSelectDialog )
+            }
+        }
+    }
+
+    function destroyHeatSelectDialog() {
+        if ( heatSelectDialogHolder !== null ) {
+            heatSelectDialogHolder.destroy()
+            heatSelectDialogHolder = null
+        }
+    }
+
     Rectangle {
         id: mainBackground
         anchors.fill: parent
@@ -53,7 +73,10 @@ Item {
                return "qrc:/UI/Assets/auto.png"
             return "qrc:/UI/Assets/wifi.png"
         }
-
+        MouseArea {
+            anchors.fill: parent
+            onClicked: createHeatSelectDialog()
+        }
     }
 
     Image {
