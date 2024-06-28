@@ -6,13 +6,21 @@ Rectangle {
     color: "black"
     anchors.fill: parent
 
+    StackView {
+        id: settingsStackView
+        anchors.fill: parent
+        initialItem: "SettingsMainMenu.qml"
+        // clip: true
+    }
+
     Image {
         id: backButton
 
         anchors {
             left: parent.left
             top: parent.top
-            margins: 10
+            leftMargin: 30
+            topMargin: 50
         }
         width: 40
         height: 40
@@ -20,20 +28,14 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: mainLoader.source = "qrc:/UI/HomeScreen/HomeScreen.qml"
+            onClicked: {
+                if ( settingsStackView.depth >= 2 )
+                    settingsStackView.pop()
+                else
+                    mainLoader.source = "qrc:/UI/HomeScreen/HomeScreen.qml"
+            }
         }
     }
 
-    Rectangle {
-        id: settingsRectange
-
-        width: parent.width / 2
-        height: parent.height * 0.8
-        anchors.centerIn: parent
-        radius: 10
-        color: "black"
-        border.color: "white"
-        border.width: 3
-    }
 }
 

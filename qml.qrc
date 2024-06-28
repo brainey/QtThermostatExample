@@ -14,5 +14,8 @@
         <file>UI/HomeScreen/TemperatureControlSlider.qml</file>
         <file>UI/HomeScreen/HeatSelectDialog.qml</file>
         <file>UI/Settings/SettingsScreen.qml</file>
+        <file>UI/Settings/SettingsMainMenu.qml</file>
+        <file>UI/Assets/thermometer.svg</file>
+        <file>UI/Settings/AboutScreen.qml</file>
     </qresource>
 </RCC>
